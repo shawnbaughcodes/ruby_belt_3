@@ -1,0 +1,15 @@
+<h1>Bright Ideas For Assholes</h1>
+<h3>Hi, <%=@current_user.name%></h3>
+<form class="idea_create" action="/ideas" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <textarea name="idea[content]" rows="2" cols="60" placeholder="Post something assholy here..."></textarea>
+    <input type="submit" name="" value="Go Go Power Ranger!">
+</form>
+<%@ideas.each do |idea|%>
+<p><a href="/users/<%=idea.user.id%>"><%=idea.user.name%></a> says: <%=idea.content%></p>
+<a href="/likes/<%=idea.id%>" data-method="post"><button>Like</button></a>
+<p><a href="/ideas/<%=idea.id%>"><%=idea.users_liked.length%> people</a> like this</p>
+    <%if idea.user.id = @current_user.id%>
+        <a href="/ideas/<%idea.id%>" data-method="post">Delete</a>
+    <%end%>
+<%end%>

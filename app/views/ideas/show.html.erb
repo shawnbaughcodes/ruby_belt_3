@@ -1,0 +1,6 @@
+<h3><%=@idea.user.name%> says:</h3><p><%=@idea.content%></p>
+
+<h4>People who have liked this idea:</h4>
+<%@count.each do |user|%>
+    <p><a href="/users/<%=user.id %>"><%=user.name%></a></p>
+<%end%>
