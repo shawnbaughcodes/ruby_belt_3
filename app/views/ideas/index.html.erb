@@ -9,7 +9,7 @@
 <p><a href="/users/<%=idea.user.id%>"><%=idea.user.name%></a> says: <%=idea.content%></p>
 <a href="/likes/<%=idea.id%>" data-method="post"><button>Like</button></a>
 <p><a href="/ideas/<%=idea.id%>"><%=idea.users_liked.length%> people</a> like this</p>
-    <%if idea.user.id = @current_user.id%>
+    <%if idea.user.id == @current_user.id%>
         <a href="/ideas/<%idea.id%>" data-method="post">Delete</a>
     <%end%>
 <%end%>

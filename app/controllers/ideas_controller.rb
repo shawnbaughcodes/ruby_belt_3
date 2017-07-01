@@ -22,6 +22,8 @@ class IdeasController < ApplicationController
   end
 
   def destroy
+      Idea.destroy(params[:id])
+      redirect_to '/ideas'
   end
 
   private
