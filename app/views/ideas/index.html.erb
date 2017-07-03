@@ -1,15 +1,31 @@
-<h1>Bright Ideas For Assholes</h1>
-<h3>Hi, <%=@current_user.name%></h3>
-<form class="idea_create" action="/ideas" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    <textarea name="idea[content]" rows="2" cols="60" placeholder="Post something assholy here..."></textarea>
-    <input type="submit" name="" value="Go Go Power Ranger!">
-</form>
-<%@ideas.each do |idea|%>
-<p><a href="/users/<%=idea.user.id%>"><%=idea.user.name%></a> says: <%=idea.content%></p>
-<a href="/likes/<%=idea.id%>" data-method="post"><button>Like</button></a>
-<p><a href="/ideas/<%=idea.id%>"><%=idea.users_liked.length%> people</a> like this</p>
-    <%if idea.user.id == @current_user.id%>
-        <a href="/ideas/<%idea.id%>" data-method="post">Delete</a>
+<!-- <h3>Hi, <%=@current_user.name%></h3> -->
+<div class="button_create">
+    <h2 id="create_button">Post an Idea</h2>
+</div>
+<div class="create_idea" hidden>
+    <form class="idea_create" action="/ideas" method="post">
+        <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+        <div>
+            <textarea name="idea[content]" rows="2" cols="60" placeholder="Post your idea here..."></textarea>
+        </div>
+        <input type="submit" value="Post">
+        <h3 id="cancel">Cancel</h3>
+    </form>
+</div>
+<div class="ideas_container">
+    <%@ideas.each do |idea|%>
+    <div class="ideas">
+        <div class="content">
+            <h3><a href="/users/<%=idea.user.id%>"><%=idea.user.name%></a></h3>
+            <p><%=idea.content%></p>
+        </div>
+        <a href="/likes/<%=idea.id%>" data-method="post"><button>Like</button></a>
+        <p id="likes" ><%=idea.users_liked.length%> Likes</p>
+            <%if idea.user.id == @current_user.id%>
+                <a href="/ideas/<%=idea.id%>" data-method="post">Delete</a>
+            <%end%>
+            <br>
+            <a href="/ideas/<%=idea.id%>">Disscus</a>
+    </div>
     <%end%>
-<%end%>
+</div>

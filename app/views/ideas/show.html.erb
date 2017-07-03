@@ -1,4 +1,9 @@
 <h3><%=@idea.user.name%> says:</h3><p><%=@idea.content%></p>
+<form class="" action="index.html" method="post">
+    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+    <textarea name="comment[content]" rows="4" cols="80"></textarea>
+    <input type="submit" value="Submit">
+</form>
 
 <h4>People who have liked this idea:</h4>
 <%@count.each do |user|%>

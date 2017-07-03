@@ -1,35 +1,57 @@
-<h1>Bright Ideas</h1>
-<h3>Registration</h3>
-<form class="" action="/users" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    Name:
-    <input type="text" name="user[name]">
-    Email:
-    <input type="text" name="user[email]">
-    Password:
-    <input type="text" name="user[password]">
-    Password Confirmation:
-    <input type="text" name="user[password_confirmation]">
-    <input type="submit" value="Register">
-</form>
-<div>
-    <%if flash[:user_errors]%>
-        <%flash[:user_errors].each do |error|%>
-            <p><%=error%></p>
-        <%end%>
-    <%end%>
-</div>
-<h3>Login</h3>
-<form class="" action="sessions" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    Email:
-    <input type="text" name="user[email]">
-    Password:
-    <input type="password" name="user[password]">
-    <input type="submit" value="Login">
-</form>
-<div class="">
-    <% if flash[:login_errors] %>
-        <p><%= flash[:login_errors] %></p>
-    <%end%>
+<div class="idea_container">
+    <div class="idea_header" >
+        <h1>Bright Ideas</h1>
+        <h4>Brainstorm. Collaborate. Create.</h4>
+        <br>
+        <p id="login">Login</p>
+        <p id="register">Register</p>
+    </div>
+
+    <div class="register_form" hidden>
+        <h2>Registrer</h2>
+        <form class="" action="/users" method="post">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <div class="">
+                <input type="text" name="user[name]" placeholder="Name">
+            </div>
+            <div class="">
+                <input type="text" name="user[email]" placeholder="Email">
+            </div>
+            <div class="">
+                <input type="text" name="user[password]" placeholder="Password">
+            </div>
+            <div class="">
+                <input type="text" name="user[password_confirmation]" placeholder="Password Confirmation">
+            </div>
+            <div class="">
+                <input type="submit" value="Register">
+            </div>
+            <p id="register_cancel">Cancel</p>
+        </form>
+            <%if flash[:user_errors]%>
+                <%flash[:user_errors].each do |error|%>
+                    <p><%=error%></p>
+                <%end%>
+            <%end%>
+    </div>
+    <div class="login_form" hidden>
+        <h2>Login</h2>
+        <form class="" action="sessions" method="post">
+            <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
+            <div class="">
+                <input type="text" name="user[email]" placeholder="Email">
+            </div>
+            <div class="">
+                <input type="password" name="user[password]" placeholder="Password">
+            </div>
+            <div class="">
+                <input type="submit" value="Login">
+            </div>
+            <p id="login_cancel">Cancel</p>
+        </form>
+
+            <% if flash[:login_errors] %>
+                <p><%= flash[:login_errors] %></p>
+            <%end%>
+    </div>
 </div>
