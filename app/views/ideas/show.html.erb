@@ -1,11 +1,12 @@
-<h3><%=@idea.user.name%> says:</h3><p><%=@idea.content%></p>
-<form class="" action="index.html" method="post">
-    <input type="hidden" name="authenticity_token" value="<%=form_authenticity_token%>">
-    <textarea name="comment[content]" rows="4" cols="80"></textarea>
-    <input type="submit" value="Submit">
-</form>
-
-<h4>People who have liked this idea:</h4>
-<%@count.each do |user|%>
-    <p><a href="/users/<%=user.id %>"><%=user.name%></a></p>
-<%end%>
+<div class="content_container">
+    <h3>
+        <a href="/users/<%=@current_user.id %>"><%=@current_user.name%></a> says:
+    </h3>
+    <p id="content">
+        <%=@idea.content%>
+    </p>
+    <h4>People who have liked this idea:</h4>
+    <%@count.each do |user|%>
+        <p><a href="/users/<%=user.id%>"><%=user.name%></a></p>
+    <%end%>
+</div>

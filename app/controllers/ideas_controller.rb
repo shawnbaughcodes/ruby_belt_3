@@ -17,6 +17,7 @@ class IdeasController < ApplicationController
   end
 
   def show
+      @current_user = current_user
       @idea = Idea.find(params[:id])
       @count = Idea.find(params[:id]).users_liked.distinct
   end

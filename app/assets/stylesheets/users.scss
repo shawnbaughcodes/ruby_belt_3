@@ -127,3 +127,33 @@ td a {
 .create_idea {
 	text-align: center;
 }
+// COMMENT STYLES
+.content_container {
+	text-align: center;
+	color: white;
+	background: rgba(0,0,0,0.2);
+	display: inline-block;
+	vertical-align: top;
+	// opacity: 0.2;
+	width: 30vw;
+	// height: 30vh;
+	margin-left: 35%;
+	margin-top: 5%;
+	padding-top: 3%;
+	padding-bottom: 2%;
+	border-radius: 5px;
+}
+.content_container a{
+	text-decoration: none;
+	color: inherit;
+}
+.content_container h3 {
+	font-size: 30pt;
+}
+.content_container p#content {
+	font-size: 30pt;
+	border-bottom: 2px solid black;
+}
+.content_container h4 {
+	font-size: 15pt;
+}
